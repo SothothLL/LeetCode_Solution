@@ -8,9 +8,9 @@ class Solution:
                 j = i + 1
                 k = len(nums) - 1
                 while j < k:
-                    l = nums[i] + nums[j] +nums[k]
+                    l = nums[i] + nums[j] + nums[k]
                     if l == 0:
-                        res.append([nums[i],nums[j],nums[k]])
+                        res.append([nums[i], nums[j], nums[k]])
                         j += 1
                         k -= 1
                         while j < k and nums[j] == nums[j-1]:
