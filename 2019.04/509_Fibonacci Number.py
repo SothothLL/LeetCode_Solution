@@ -20,3 +20,8 @@ class Solution:
             b = c
             c = a+b
         return a
+
+# 通项公式
+class Solution:
+    def fib(self, N: int) -> int:
+        return int((((1+5**0.5)/2)**N - ((1-5**0.5)/2)**N)/(5**0.5))
