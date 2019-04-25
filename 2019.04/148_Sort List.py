@@ -6,29 +6,36 @@
 
 class Solution:
     def sortList(self, head: ListNode) -> ListNode:
-        cur = head
-        self.fastSort(head, None)
-        return cur
+        if head is None or head.next is None:
+            return head
+        return self.divide(head)
 
-    def swap(self, a: ListNode, b: ListNode):
-        temp = a.val
-        a.val = b.val
-        b.val = temp
+    def divide(self, head: ListNode):
+        if head.next is None:
+            return head
+        fast, slow, temp = head, head, head
+        while fast is not None and fast.next is not None:
+            temp = slow
+            slow = slow.next
+            fast = fast.next.next
+        temp.next = None
+        left = self.divide(head)
+        right = self.divide(slow)
+        return self.merge(left, right)
 
-    def getSeparator(self, p_begin: ListNode, p_end:ListNode) -> ListNode:
-        p = p_begin
-        q = p_begin.next
-        key = p.val
-        while q != p_end:
-            if q.val<key:
-                p = p.next
-                self.swap(p,q)
-            q = q.next
-        self.swap(p_begin, p)
-        return p
-
-    def fastSort(self, p_begin: ListNode, p_end:ListNode):
-        if p_begin != p_end:
-            separator = self.getSeparator(p_begin, p_end)
-            self.fastSort(p_begin, separator)
-            self.fastSort(separator.next, p_end)
+    def merge(self, left: ListNode, right: ListNode):
+        temp_node = ListNode(0)
+        temp = temp_node
+        while left is not None and right is not None:
+            if left.val <= right.val:
+                temp.next = left
+                left = left.next
+            else:
+                temp.next = right
+                right = right.next
+            temp = temp.next
+        if left is not None:
+            temp.next = left
+        if right is not None:
+            temp.next = right
+        return temp_node.next
