@@ -39,3 +39,10 @@ class Solution:
         if right is not None:
             temp.next = right
         return temp_node.next
+
+
+"""
+在O(nlogn)时间复杂度和常数级空间复杂度下，对链表进行排序。
+
+归并排序
+"""

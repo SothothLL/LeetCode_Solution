@@ -17,3 +17,10 @@ class Solution:
             head.next = stack.pop()
             head = head.next
         return rev
+
+
+"""
+反转一个单链表。
+
+用一个栈来存储单链表的元素，再将元素依次从栈取出。
+"""

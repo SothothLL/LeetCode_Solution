@@ -13,3 +13,11 @@ class Solution:
         l_node = self.maxDepth(root.left)
         r_node = self.maxDepth(root.right)
         return max(l_node, r_node)+1
+
+
+"""
+给定一个二叉树，找出其最大深度。
+二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+
+
+"""
