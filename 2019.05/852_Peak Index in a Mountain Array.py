@@ -6,4 +6,4 @@ class Solution:
             left += 1
         while A[right-1] > A[right]:
             right -= 1
-        return A[left].index()
+        return left
